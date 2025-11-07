@@ -13,11 +13,7 @@
 #include <Servo.h>
 #include <LedControl.h>
 
-// Init constants
-
-// Init global variables
-
-// Construct objects
+// Setting up classes.
 RTC_DS3231 rtc;
 U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NO_ACK);
 Servo myServo;
@@ -101,6 +97,11 @@ void oledWrite(String text, float temp) {
   } while (u8g.nextPage());
 }
 
+/*
+* This function write a temperature value to the servo
+*Parameters: - value: temperature value to write to servo
+*Returns: void
+*/
 void servoWrite(float value) {
   // Mappa temp (0°C–40°C) till servo (0°–180°)
   int angle = map((int)value, 0, 40, 0, 180);
